@@ -1,0 +1,193 @@
+ 
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galaxy Message ✨</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    overflow:hidden;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(to bottom,#020111,#090A1A,#12082b);
+}
+
+/* Bintang */
+.stars{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:transparent;
+}
+
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    border-radius:50%;
+    animation:blink 2s infinite;
+}
+
+@keyframes blink{
+    0%,100%{opacity:.2;}
+    50%{opacity:1;}
+}
+
+/* Meteor */
+.shooting{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:white;
+    border-radius:50%;
+    box-shadow:0 0 20px white;
+    animation:shoot 5s linear infinite;
+}
+
+@keyframes shoot{
+    0%{
+        transform:translate(-200px,-200px);
+        opacity:1;
+    }
+    100%{
+        transform:translate(120vw,120vh);
+        opacity:0;
+    }
+}
+
+.card{
+    position:relative;
+    z-index:2;
+    width:90%;
+    max-width:400px;
+    padding:30px;
+    text-align:center;
+    color:white;
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:20px;
+    box-shadow:0 0 30px rgba(130,100,255,.4);
+}
+
+h1{
+    font-size:32px;
+    margin-bottom:20px;
+}
+
+p{
+    font-size:18px;
+    line-height:1.8;
+}
+
+button{
+    margin-top:25px;
+    padding:12px 28px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    background:#7b5cff;
+    color:white;
+    font-size:16px;
+    transition:.3s;
+}
+
+button:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 20px #7b5cff;
+}
+
+.popup{
+    position:fixed;
+    inset:0;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    background:rgba(0,0,0,.75);
+}
+
+.box{
+    width:85%;
+    max-width:350px;
+    background:#14142d;
+    color:white;
+    padding:25px;
+    border-radius:18px;
+    text-align:center;
+    box-shadow:0 0 20px #8a6cff;
+}
+
+.box h2{
+    margin-bottom:15px;
+}
+
+.close{
+    margin-top:20px;
+}
+</style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<div class="shooting"></div>
+
+<div class="card">
+    <h1>🌌 Hi, Stranger</h1>
+
+    <p>
+        Hari mu gimana?<br>
+        Semoga baik-baik yaa. ✨
+    </p>
+
+    <button onclick="openBox()">Buka Pesan 💌</button>
+</div>
+
+<div class="popup" id="popup">
+    <div class="box">
+        <h2>✨</h2>
+        <p>
+            Semoga hari ini banyak hal baik yang datang ke kamu.<br><br>
+            Jangan lupa istirahat dan tetap jaga kesehatan ya.<br><br>
+            Semangat menjalani harinya. 🌙
+        </p>
+
+        <button class="close" onclick="closeBox()">Tutup</button>
+    </div>
+</div>
+
+<script>
+// Membuat 200 bintang
+for(let i=0;i<200;i++){
+    let star=document.createElement("div");
+    star.className="star";
+    star.style.left=Math.random()*100+"%";
+    star.style.top=Math.random()*100+"%";
+    star.style.animationDelay=Math.random()*3+"s";
+    star.style.opacity=Math.random();
+    document.getElementById("stars").appendChild(star);
+}
+
+function openBox(){
+    document.getElementById("popup").style.display="flex";
+}
+
+function closeBox(){
+    document.getElementById("popup").style.display="none";
+}
+</script>
+
+</body>
+</html>
